@@ -9,7 +9,7 @@ const config = require('./config');
 //middlewares
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
-
+const session = require('express-session');
 const SpotifyAPI = require('./utils/spotify');
 
 const port = 3000;
@@ -24,10 +24,15 @@ app.prepare()
 
     const server = express();
     server.use(cookieParser());
-    server.use(morgan('combined'));
+    server.use(morgan('dev'));
+    server.use(session({
+      secret: 'my super secret key',
+      resave: false,
+      saveUninitialized: true
+    }));
 
 
-    server.get('/login', (req, res) => {
+    server.get('/auth', (req, res) => {
       const state = rs.generate(16);
       res.cookie(stateKey, state);
       res.redirect(SpotifyAPI.getAuthURL(config.spotify, state));
@@ -38,19 +43,26 @@ app.prepare()
       const { code, state } = req.query;
       const { cookies } = req;
       const storedState = cookies ? cookies[stateKey] : null;
-      res.clearCookie(stateKey);
 
       if (!state || state !== storedState) {
         return app.render(req, res, '/', { error: true, message: 'state mismatch' })
       }
 
-      SpotifyAPI.getTokens(code, config.spotify, (err, tokens) => app
-        .render(req, res, err ? '/' : '/other', (err || tokens))
-      );
+      res.clearCookie(stateKey);
+      SpotifyAPI.getTokens(code, config.spotify, (err, tokens) => {
+        req.session.token = tokens.access_token;
+        res.cookie('access_token', tokens.access_token);
+        return app
+          .render(req, res,  '/' , (err || tokens))
+      });
     });
 
 
-    server.get('*', (req, res) => handle(req, res))
+    server.get('*', (req, res) => {
+      if (!req.session.token) return app.render(req, res, '/login')
+      console.log("heeeeyyyy");
+      return handle(req, res)
+    });
 
 
     server.listen(port, (err) => {

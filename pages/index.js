@@ -1,11 +1,8 @@
-import Link from 'next/link';
+import React, { Component } from 'react';
+import { persitsSession } from '../utils/authPersistense';
+import withAuth from '../utils/withAuth';
 
-const App = () => (
-  <div>
-    <h1> Spotify app </h1>
-    <Link href="/login">login</Link>
-  </div>
-);
+const App = ({ token }) => <div>logged with token: { token }</div>;
 
+export default withAuth(App);
 
-export default App;
