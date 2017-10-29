@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import { persitsSession, isLogged, getToken } from './authPersistense';
+import { persitsSession, isLogged, getToken } from './auth';
 
 
 export default function withAuth(BaseComponent) {
