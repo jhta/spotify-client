@@ -1,8 +1,11 @@
 const request = require('request');
 const qs = require('querystring');
 const objectAssign = require('object-assign');
-const AUTH = 'https://accounts.spotify.com/authorize?';
-const GET_TOKEN = 'https://accounts.spotify.com/api/token';
+
+const ACCOUNT_URI = 'https://accounts.spotify.com';
+
+const AUTH = `${ACCOUNT_URI}/authorize?`;
+const GET_TOKEN = `${ACCOUNT_URI}/api/token`;
 
 const getAuthURL = (config, state) => `${AUTH}${
     qs.stringify(objectAssign({}, config, { state: state }))

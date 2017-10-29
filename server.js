@@ -58,11 +58,11 @@ app.prepare()
     });
 
 
-    server.get('*', (req, res) => {
-      if (!req.session.token) return app.render(req, res, '/login')
-      console.log("heeeeyyyy");
-      return handle(req, res)
-    });
+    server.get('*', (req, res) => !req.session.token ?
+      app.render(req, res, '/login')
+      :
+      handle(req, res)
+    );
 
 
     server.listen(port, (err) => {

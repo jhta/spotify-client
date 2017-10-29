@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { persitsSession } from '../utils/authPersistense';
+import SearchBar from '../client/components/search/SearchBar';
+import List from '../client/components/search/List';
 import withAuth from '../utils/withAuth';
 
-const App = ({ token }) => <div>logged with token: { token }</div>;
+const App = ({ token }) => (
+  <div> k
+    <div>logged with token: { token }</div>
+      <SearchBar />
+      <List />
+    </div>
+);
 
 export default withAuth(App);
 
