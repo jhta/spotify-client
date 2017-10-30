@@ -5,6 +5,8 @@ const Layout = styled.div`
   margin: 0 auto;
   padding: 2rem 1rem;
   max-width: 720px;
+  width: 100%;
+  position: relative;
 
   @media only screen and (min-width: 720px) {
     padding: 2rem 0;

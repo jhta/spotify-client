@@ -1,5 +1,5 @@
 const request = require('request');
-const qs = require('querystring');
+const qs = require('query-string');
 const objectAssign = require('object-assign');
 
 const ACCOUNT_URI = 'https://accounts.spotify.com';

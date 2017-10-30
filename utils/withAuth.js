@@ -5,11 +5,10 @@ import { persitsToken, isLogged } from './auth';
 
 export default function withAuth(BaseComponent) {
   class AuthComponent extends Component {
-    static async getInitialProps({ req, res, query }) {
+    static async getInitialProps({ req, query }) {
       let token = '';
-      if (req.session) token = req.session.token;
-      else if (query) token = query.access_token;
-      return { token };
+      if (req && req.session) token = req.session.token;
+      return { token, query };
     }
 
     componentDidMount() {

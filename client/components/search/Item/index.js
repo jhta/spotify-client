@@ -1,24 +1,19 @@
 import { pure } from 'recompose';
-import Anchor from '../ui/styled/Anchor';
+import Link from 'next/link';
+import Anchor from '../../ui/styled/Anchor';
 import { LItem, TrackCover } from './style';
-
-const getArtistString = (artists = []) => artists
-  .map(artist => artist.name)
-  .join(', ');
-
-const getImage = (images = []) => images ?
-  images[1] && images[1].url
-  :
-  false;
+import { getArtistString, getImage } from '../../../../utils/formatTrack'
 
 
-const Item = ({ name, href, artists = [], album = {}}) => (
+const Item = ({ name, id, href, artists = [], album = {}}) => (
   <LItem>
     <TrackCover>
       <img src={getImage(album.images)} width={120} height={120} />
     </TrackCover>
     <div>
-      <Anchor primary href={href}>{ name }</Anchor>
+      <Link href={{ pathname: '/track', query: { name, id }}} passHref >
+        <Anchor primary>{ name }</Anchor>
+      </Link>
       <p>{ getArtistString(artists) }</p>
       <Anchor gray href={album.href}>{ album.name }</Anchor>
     </div>

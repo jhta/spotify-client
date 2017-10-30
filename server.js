@@ -53,7 +53,7 @@ app.prepare()
         req.session.token = tokens.access_token;
         res.cookie('access_token', tokens.access_token);
         return app
-          .render(req, res,  '/' , (err || tokens))
+          .render(req, res,  '/')
       });
     });
 

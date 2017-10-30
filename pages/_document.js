@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
-        <body style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.5rem', color: 'white', height: '100%', backgroundColor: 'black', margin: '0'}}>
+        <body style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '1.5rem', color: 'white', height: '100%', backgroundColor: 'black', margin: '0', position: 'relative'}}>
           <Main />
           <NextScript />
         </body>

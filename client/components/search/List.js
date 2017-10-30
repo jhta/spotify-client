@@ -5,7 +5,7 @@ import { pure } from 'recompose';
 const List = pure(({ tracks = [] }) => (
   <ULList>
     {
-      tracks.map((track, i) => <Item {...track} />)
+      tracks.map((track, i) => <Item {...track} key={i} />)
     }
   </ULList>
 ))

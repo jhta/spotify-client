@@ -12,7 +12,7 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 4px solid #004670;
+    border-bottom: 4px solid white;
   }
 
   &::-webkit-input-placeholder {
