@@ -29,7 +29,7 @@ const App = ({ token, onSubmit, isLoading, tracks, error }) => (
             :
             null
         }
-        <SearchBar onSubmit={onSubmit} />
+        <SearchBar mt={!tracks.length && !error} onSubmit={onSubmit} />
         {
           isLoading ?
             <Loading />

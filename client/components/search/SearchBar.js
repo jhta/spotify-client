@@ -41,7 +41,9 @@ export default class SearchBar extends Component {
       <div>
       <Form onSubmit={this.handleSubmit}>
         <Input
+          mt={this.props.mt}
           type="text"
+          ref={(input) => { this.input = input }}
           placeholder="search: Bohemian Rhapsody"
           onChange={this.handleChange}/>
       </Form>

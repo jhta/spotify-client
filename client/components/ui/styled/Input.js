@@ -7,8 +7,11 @@ const Input = styled.input`
   font-size: 2.5rem;
   padding: 1rem;
   color: white;
+  width: 100%;
+  min-width: 40rem;
   font-style: cursive;
   border-bottom: 4px solid transparent;
+  margin-top: ${(props => props.mt ? '15rem': '0')};
 
   &:focus {
     outline: none;
