@@ -16,7 +16,7 @@ function *searchTrackSaga(action = {}) {
     const tracks = yield call(searchTracks, action.payload || '');
     yield put(searchTrackSuccess({ tracks }));
   } catch (error) {
-    yield put(searchTrackError({ error }))
+    yield put(searchTrackError({ error: error.toString() }))
   }
 }
 

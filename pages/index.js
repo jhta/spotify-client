@@ -7,9 +7,16 @@ import makeStore from '../client/store';
 import initialStore from '../client/intialState';
 import { searchTrack } from '../client/actions/search';
 import Loading from '../client/components/ui/Loading';
+import ErrorBox from '../client/components/ui/Error';
 
-const App = ({ token, onSubmit, isLoading, tracks }) => (
+const App = ({ token, onSubmit, isLoading, tracks, error }) => (
   <div>
+    {
+      error ?
+        <ErrorBox message={error}/>
+        :
+        null
+    }
     <div>logged with token: { token }</div>
     <SearchBar onSubmit={onSubmit} />
     {
@@ -20,10 +27,6 @@ const App = ({ token, onSubmit, isLoading, tracks }) => (
     }
   </div>
 );
-
-App.getInitialProps = ({ store }) => {
-  console.log(store);
-}
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: track => dispatch(searchTrack(track))

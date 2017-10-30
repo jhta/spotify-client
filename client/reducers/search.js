@@ -18,7 +18,7 @@ const reducer = handleActions({
     isLoading: false
   }),
 
-  SEARCH_TRACK_ERROR: (state, { error }) => ({
+  SEARCH_TRACK_ERROR: (state, { payload: { error } }) => ({
     ...state,
     isLoading: false,
     error
