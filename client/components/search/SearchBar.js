@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { searchSongs } from '../../services/spotify';
+import Input from '../ui/styled/Input';
+
+const Form = styled.form`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 export default class SearchBar extends Component {
 
@@ -21,18 +29,22 @@ export default class SearchBar extends Component {
   handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
-    if (this.state.value) {
-      this.props.onSubmit(this.state.value);
+    const { value } = this.state;
+    this.setState({ value: '' });
+    if (value && value.length > 0) {
+      this.props.onSubmit(value);
     }
   }
 
   render() {
     return (
       <div>
-      <form>
-        <input type="text" placeholder="Michael Jackson" onChange={this.handleChange}/>
-        <div onClick={this.handleSubmit}>holi</div>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <Input
+          type="text"
+          placeholder="search: Bohemian Rhapsody"
+          onChange={this.handleChange}/>
+      </Form>
     </div>
     )
   }

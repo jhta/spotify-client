@@ -1,10 +1,13 @@
-import Song from './Song';
+import Item from './Item';
+import ULList from '../ui/styled/List';
+import { pure } from 'recompose';
 
-const List = () => (
-  <ul>
-    <Song />
-    <Song />
-  </ul>
-)
+const List = pure(({ tracks = [] }) => (
+  <ULList>
+    {
+      tracks.map((track, i) => <Item {...track} />)
+    }
+  </ULList>
+))
 
 export default List;

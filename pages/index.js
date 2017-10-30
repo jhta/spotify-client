@@ -8,24 +8,37 @@ import initialStore from '../client/intialState';
 import { searchTrack } from '../client/actions/search';
 import Loading from '../client/components/ui/Loading';
 import ErrorBox from '../client/components/ui/Error';
+import Layout from '../client/components/ui/styled/Layout';
+import Background from '../client/components/ui/styled/GradientBackground';
+import styled from 'styled-components';
+
+const UIApp = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 const App = ({ token, onSubmit, isLoading, tracks, error }) => (
-  <div>
-    {
-      error ?
-        <ErrorBox message={error}/>
-        :
-        null
-    }
-    <div>logged with token: { token }</div>
-    <SearchBar onSubmit={onSubmit} />
-    {
-      isLoading ?
-        <Loading />
-        :
-        <List tracks={tracks}/>
-    }
-  </div>
+  <Background>
+    <Layout>
+      <UIApp>
+        {
+          error ?
+            <ErrorBox message={error}/>
+            :
+            null
+        }
+        <SearchBar onSubmit={onSubmit} />
+        {
+          isLoading ?
+            <Loading />
+            :
+            <List tracks={tracks}/>
+        }
+      </UIApp>
+    </Layout>
+  </Background>
 );
 
 const mapDispatchToProps = dispatch => ({
@@ -40,4 +53,3 @@ export default withRedux(
   mapStateToProps,
   mapDispatchToProps
 )(withAuth(App));
-

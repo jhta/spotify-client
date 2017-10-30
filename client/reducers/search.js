@@ -3,7 +3,8 @@ import { handleActions } from 'redux-actions';
 const defaultState = {
   tracks: [],
   isLoading: false,
-  error: null
+  error: null,
+  trackNameSearch: ''
 };
 
 const reducer = handleActions({
