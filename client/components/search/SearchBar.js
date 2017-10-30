@@ -18,11 +18,11 @@ export default class SearchBar extends Component {
     })
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
     if (this.state.value) {
-      searchSongs(this.state.value);
+      this.props.onSubmit(this.state.value);
     }
   }
 

@@ -1,9 +1,22 @@
+import { compose, withState } from 'recompose';
+import Loading from '../client/components/ui/Loading';
 
-export default () => (
+const enhance = compose(
+  withState('isLoading', 'onLoading', false)
+);
+
+const Login = enhance(({ isLoading, onLoading }) => (
   <div>
     <h1> Spotify app </h1>
-    <a href="/auth">login</a>
-  </div>
-)
+    {
+      isLoading ?
+        <Loading />
+        :
+      <a href="/auth" onClick={() => { onLoading(true) }}>login</a>
+    }
+      </div>
+));
+
+export default Login;
 
 

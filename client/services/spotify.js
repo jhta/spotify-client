@@ -20,11 +20,11 @@ const parseResponse = response => response.ok ?
   Promise.reject(new Error(`Error status: ${response.error}`));
 
 
-export const searchSongs = (songName = '') => fetch(
-    buildURL(SEARCH_URI, { q: encodeURI(songName), limit: 10, type: 'track' }),
+export const searchTracks = (trackName = '') => fetch(
+    buildURL(SEARCH_URI, { q: encodeURI(trackName), limit: 10, type: 'track' }),
     setHeaders(getToken())
   )
   .then(res => parseResponse(res))
-  .then(({ tracks }) => tracks)
+  .then(({ tracks }) => tracks.items || [])
   .catch(error => error);
 
