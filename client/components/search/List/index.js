@@ -1,5 +1,5 @@
-import Item from './Item';
-import ULList from '../ui/styled/List';
+import Item from '../Item';
+import ULList from '../../ui/styled/List';
 import { pure } from 'recompose';
 
 const List = pure(({ tracks = [] }) => (
