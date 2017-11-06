@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBar from '../client/components/search/SearchBar';
+import Bar from '../client/components/search/Bar';
 import List from '../client/components/search/List';
 import withAuth from '../utils/withAuth';
 import withRedux from 'next-redux-wrapper';
@@ -29,7 +29,7 @@ const App = ({ token, onSubmit, isLoading, tracks, error }) => (
             :
             null
         }
-        <SearchBar mt={!tracks.length && !error} onSubmit={onSubmit} />
+        <Bar mt={!tracks.length && !error} onSubmit={onSubmit} />
         {
           isLoading ?
             <Loading />

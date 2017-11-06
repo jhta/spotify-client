@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { searchSongs } from '../../services/spotify';
-import Input from '../ui/styled/Input';
-import Form from '../ui/styled/Form';
+import Input from '../../ui/styled/Input';
+import Form from '../../ui/styled/Form';
+
+const PLACEHOLDER = "search: Bohemian Rhapsody";
 
 export default class SearchBar extends Component {
 
@@ -39,7 +39,7 @@ export default class SearchBar extends Component {
           mt={this.props.mt}
           type="text"
           ref={(input) => { this.input = input }}
-          placeholder="search: Bohemian Rhapsody"
+          placeholder={PLACEHOLDER}
           onChange={this.handleChange}/>
       </Form>
     </div>

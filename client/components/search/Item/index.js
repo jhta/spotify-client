@@ -2,10 +2,10 @@ import { pure } from 'recompose';
 import Link from 'next/link';
 import Anchor from '../../ui/styled/Anchor';
 import { LItem, TrackCover } from './style';
-import { getArtistString, getImage } from '../../../../utils/formatTrack'
+import { getArtistString, getImage } from '../../../../utils/formatTrack';
 
 
-const Item = ({ name, id, href, artists = [], album = {}}) => (
+const Item = pure(({ name, id, href, artists = [], album = {}}) => (
   <LItem>
     <TrackCover>
       <img src={getImage(album.images)} width={120} height={120} />
@@ -18,6 +18,6 @@ const Item = ({ name, id, href, artists = [], album = {}}) => (
       <Anchor gray href={album.href}>{ album.name }</Anchor>
     </div>
   </LItem>
-);
+));
 
 export default Item;
