@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
   onSubmit: track => dispatch(searchTrack(track))
 });
 
-const mapStateToProps = state => { console.info(state); return state };
+const mapStateToProps = state => state;
 
 
 export default withRedux(
