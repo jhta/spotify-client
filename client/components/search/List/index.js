@@ -1,13 +1,13 @@
 import Item from '../Item';
-import ULList from '../../ui/styled/List';
+import UL from './style';
 import { pure } from 'recompose';
 
 const List = pure(({ tracks = [] }) => (
-  <ULList>
+  <UL>
     {
       tracks.map((track, i) => <Item {...track} key={i} />)
     }
-  </ULList>
+  </UL>
 ))
 
 export default List;

@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { searchSongs } from '../../services/spotify';
 import Input from '../ui/styled/Input';
-
-const Form = styled.form`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
+import Form from '../ui/styled/Form';
 
 export default class SearchBar extends Component {
 
