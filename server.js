@@ -52,8 +52,7 @@ app.prepare()
       SpotifyAPI.getTokens(code, config.spotify, (err, tokens) => {
         req.session.token = tokens.access_token;
         res.cookie('access_token', tokens.access_token);
-        return app
-          .render(req, res,  '/')
+        res.redirect('/');
       });
     });
 
