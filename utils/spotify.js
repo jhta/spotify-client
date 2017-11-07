@@ -36,7 +36,6 @@ const getTokens = (code, config, cb) => {
       else cb(null, { access_token, refresh_token })
     }
   );
-
 }
 
 
