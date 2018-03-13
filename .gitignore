@@ -1,2 +1,4 @@
 node_modules
 .next
+config.prod.js
+config.dev.js

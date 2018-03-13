@@ -1,7 +1,7 @@
 const clientStorage = (action = 'get', token = null) => {
-
   switch(action) {
     case 'add':
+      localStorage.removeItem('access_token');
       return localStorage.setItem('access_token', token);
     case 'remove':
       return localStorage.removeItem('access_token');
